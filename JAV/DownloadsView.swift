@@ -62,8 +62,8 @@ struct DownloadsView: View {
             case .pan115: data = try await JavDBSDK.pan115Tasks().raw
             case .thunder: data = try await JavDBSDK.thunderTasks().raw
             }
-        } catch {
-            error = error.localizedDescription
+        } catch let err {
+            error = err.localizedDescription
         }
         loading = false
     }

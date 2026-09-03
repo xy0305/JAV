@@ -202,8 +202,8 @@ struct MovieDetailView: View {
             if let m = try? await JavDBSDK.magnets(id: movie.id) {
                 magnets = m.magnets ?? []
             }
-        } catch {
-            error = error.localizedDescription
+        } catch let err {
+            error = err.localizedDescription
         }
         loading = false
     }

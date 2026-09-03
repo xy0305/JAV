@@ -59,8 +59,8 @@ struct SubscriptionsView: View {
             case .videos:
                 data = try await JavDBSDK.subscriptionVideos().raw
             }
-        } catch {
-            error = error.localizedDescription
+        } catch let err {
+            error = err.localizedDescription
         }
         loading = false
     }

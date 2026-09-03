@@ -67,8 +67,8 @@ struct PlayerView: View {
             } else {
                 error = "未找到可用的播放源"
             }
-        } catch {
-            error = error.localizedDescription
+        } catch let err {
+            error = err.localizedDescription
         }
         loading = false
     }

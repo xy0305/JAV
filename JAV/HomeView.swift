@@ -98,8 +98,8 @@ struct LatestView: View {
         do {
             let p = try await JavDBSDK.latest(page: 1, type: type, sortBy: sortBy, filterBy: filterBy)
             movies = p.movies ?? []
-        } catch {
-            error = error.localizedDescription
+        } catch let err {
+            error = err.localizedDescription
         }
         loading = false
     }
@@ -143,8 +143,8 @@ struct RecommendView: View {
         do {
             let p = try await JavDBSDK.recommend(page: 1, limit: 40)
             movies = p.movies ?? []
-        } catch {
-            error = error.localizedDescription
+        } catch let err {
+            error = err.localizedDescription
         }
         loading = false
     }
@@ -188,8 +188,8 @@ struct RankingView: View {
         do {
             let p = try await JavDBSDK.rankings(period: period)
             movies = p.movies ?? []
-        } catch {
-            error = error.localizedDescription
+        } catch let err {
+            error = err.localizedDescription
         }
         loading = false
     }
@@ -229,8 +229,8 @@ struct Top250View: View {
         do {
             let p = try await JavDBSDK.top250(page: 1, limit: 50)
             movies = p.movies ?? []
-        } catch {
-            error = error.localizedDescription
+        } catch let err {
+            error = err.localizedDescription
         }
         loading = false
     }

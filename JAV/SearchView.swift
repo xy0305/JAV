@@ -103,8 +103,8 @@ struct SearchView: View {
             do {
                 let p = try await JavDBSDK.search(q: q)
                 movies = p.movies ?? []
-            } catch {
-                error = error.localizedDescription
+            } catch let err {
+                error = err.localizedDescription
             }
             do {
                 let a = try await JavDBSDK.searchActors(q: q)

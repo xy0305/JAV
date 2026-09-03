@@ -51,8 +51,8 @@ struct PeopleView: View {
         do {
             let p = try await JavDBSDK.actors(type: 0)
             actors = p.actors ?? []
-        } catch {
-            error = error.localizedDescription
+        } catch let err {
+            error = err.localizedDescription
         }
         loading = false
     }
@@ -113,8 +113,8 @@ struct PersonDetailView: View {
         do {
             let p = try await JavDBSDK.personMovies("actors", id: id)
             movies = p.movies ?? []
-        } catch {
-            error = error.localizedDescription
+        } catch let err {
+            error = err.localizedDescription
         }
         loading = false
     }
