@@ -196,8 +196,8 @@ final class ConfigStore: ObservableObject {
             await MainActor.run { savedMessage = "已保存" }
             try? await Task.sleep(nanoseconds: 400_000_000)
             await load()
-        } catch {
-            await MainActor.run { error = error.localizedDescription }
+        } catch let err {
+            await MainActor.run { self.error = err.localizedDescription }
         }
         await MainActor.run { saving = false }
     }

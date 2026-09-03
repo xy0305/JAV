@@ -52,8 +52,8 @@ struct LogsView: View {
             } else {
                 entries = []
             }
-        } catch {
-            error = error.localizedDescription
+        } catch let err {
+            error = err.localizedDescription
         }
         loading = false
     }
