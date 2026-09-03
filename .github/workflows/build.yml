@@ -17,6 +17,7 @@ jobs:
 
       - name: Build (unsigned)
         run: |
+          set +e
           xcodebuild build \
             -project JAV.xcodeproj \
             -scheme JAV \
@@ -29,7 +30,8 @@ jobs:
             DEVELOPMENT_TEAM="" \
             > build.log 2>&1
           EXIT=$?
-          tail -60 build.log
+          set -e
+          tail -80 build.log
           exit $EXIT
 
       - name: Package IPA
