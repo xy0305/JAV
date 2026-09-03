@@ -27,7 +27,10 @@ jobs:
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
             DEVELOPMENT_TEAM="" \
-            | tail -40
+            > build.log 2>&1
+          EXIT=$?
+          tail -60 build.log
+          exit $EXIT
 
       - name: Package IPA
         run: |
