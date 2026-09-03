@@ -28,7 +28,7 @@ struct ConnectionSetupView: View {
                     Text("服务器地址")
                         .font(.caption)
                         .foregroundColor(Theme.textSecondary)
-                    TextField("http://192.168.1.10:9090", text: $urlText)
+                    TextField("http://192.168.1.10:39090", text: $urlText)
                         .textInputAutocapitalization(.never)
                         .keyboardType(.URL)
                         .autocorrectionDisabled()
@@ -59,7 +59,7 @@ struct ConnectionSetupView: View {
                 .cornerRadius(14)
                 .disabled(testing || urlText.trimmingCharacters(in: .whitespaces).isEmpty)
 
-                Text("默认端口 9090。服务器需开启外网/局域网访问。")
+                Text("默认端口 39090。填入 NAS/服务器地址，例如 http://192.168.1.10:39090")
                     .font(.caption2)
                     .foregroundColor(Theme.textSecondary)
                 Spacer()
