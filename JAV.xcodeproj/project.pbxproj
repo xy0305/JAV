@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		ECFBA17C22CD6BF4D3B35F66 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43AD791390E6DCE61CCDEB8 /* APIClient.swift */; };
+		1F4EBEDAC3BD1986BBCEEAD3 /* AdminViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732BA22884DA02F2E27FF1FD /* AdminViews.swift */; };
 		A4BB9FE5AB3BEB5E09069AE8 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A291AA25DA85321F61D8C1 /* Components.swift */; };
+		D22453DB33C0E409D8973014 /* ConfigEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201A65F1F8AFD8071110D21 /* ConfigEditorView.swift */; };
 		262241DB7520F9386274531C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2621B30CC7B22B7D5E1E7 /* ContentView.swift */; };
 		9BC92154214806CF80F7C40A /* DownloadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE53C3C470B31B520E7FFDDE /* DownloadsView.swift */; };
 		C4CD4C530E39C71E6770B9F3 /* DynamicJSONView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F902B0487335F7EAC9BBB739 /* DynamicJSONView.swift */; };
@@ -32,7 +34,9 @@
 		D2A57DC1D883FD21FB995169 /* JAV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JAV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF9B6B99962BF5C22648242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C43AD791390E6DCE61CCDEB8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		732BA22884DA02F2E27FF1FD /* AdminViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViews.swift; sourceTree = "<group>"; };
 		21A291AA25DA85321F61D8C1 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		2201A65F1F8AFD8071110D21 /* ConfigEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigEditorView.swift; sourceTree = "<group>"; };
 		AEE2621B30CC7B22B7D5E1E7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DE53C3C470B31B520E7FFDDE /* DownloadsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsView.swift; sourceTree = "<group>"; };
 		F902B0487335F7EAC9BBB739 /* DynamicJSONView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicJSONView.swift; sourceTree = "<group>"; };
@@ -75,7 +79,9 @@
 			isa = PBXGroup;
 			children = (
 				C43AD791390E6DCE61CCDEB8 /* APIClient.swift */,
+				732BA22884DA02F2E27FF1FD /* AdminViews.swift */,
 				21A291AA25DA85321F61D8C1 /* Components.swift */,
+				2201A65F1F8AFD8071110D21 /* ConfigEditorView.swift */,
 				AEE2621B30CC7B22B7D5E1E7 /* ContentView.swift */,
 				DE53C3C470B31B520E7FFDDE /* DownloadsView.swift */,
 				F902B0487335F7EAC9BBB739 /* DynamicJSONView.swift */,
@@ -177,7 +183,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECFBA17C22CD6BF4D3B35F66 /* APIClient.swift in Sources */,
+				1F4EBEDAC3BD1986BBCEEAD3 /* AdminViews.swift in Sources */,
 				A4BB9FE5AB3BEB5E09069AE8 /* Components.swift in Sources */,
+				D22453DB33C0E409D8973014 /* ConfigEditorView.swift in Sources */,
 				262241DB7520F9386274531C /* ContentView.swift in Sources */,
 				9BC92154214806CF80F7C40A /* DownloadsView.swift in Sources */,
 				C4CD4C530E39C71E6770B9F3 /* DynamicJSONView.swift in Sources */,

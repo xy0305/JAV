@@ -152,6 +152,68 @@ final class APIClient {
         return d
     }
 
+    /// PUTs a raw JSON dictionary (for config updates) and decodes the envelope.
+    func putRawJSON<T: Decodable>(_ path: String, body: [String: Any], as type: T.Type) async throws -> T {
+        let u = try url(path)
+        var req = URLRequest(url: u)
+        req.httpMethod = "PUT"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        if let token = authToken {
+            req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+        let apiKey = AppConfig.shared.apiKey
+        if !apiKey.isEmpty {
+            req.setValue(apiKey, forHTTPHeaderField: "X-API-Key")
+        }
+        req.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
+        let (data, resp) = try await session.data(for: req)
+        if let http = resp as? HTTPURLResponse, http.statusCode == 401 {
+            throw APIError.unauthorized
+        }
+        guard let http = resp as? HTTPURLResponse, (200..<300).contains(http.statusCode) else {
+            throw APIError.server(status: (resp as? HTTPURLResponse)?.statusCode ?? 0)
+        }
+        let decoded = try JSONDecoder().decode(APIResponse<T>.self, from: data)
+        if !decoded.success {
+            throw APIError.api(message: decoded.error ?? decoded.message ?? "请求失败")
+        }
+        guard let d = decoded.data else {
+            throw APIError.api(message: "响应缺少数据")
+        }
+        return d
+    }
+
+    /// POSTs a raw JSON dictionary (for setup / login actions) and decodes the envelope.
+    func postRawJSON<T: Decodable>(_ path: String, body: [String: Any], as type: T.Type) async throws -> T {
+        let u = try url(path)
+        var req = URLRequest(url: u)
+        req.httpMethod = "POST"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        if let token = authToken {
+            req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+        let apiKey = AppConfig.shared.apiKey
+        if !apiKey.isEmpty {
+            req.setValue(apiKey, forHTTPHeaderField: "X-API-Key")
+        }
+        req.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
+        let (data, resp) = try await session.data(for: req)
+        if let http = resp as? HTTPURLResponse, http.statusCode == 401 {
+            throw APIError.unauthorized
+        }
+        guard let http = resp as? HTTPURLResponse, (200..<300).contains(http.statusCode) else {
+            throw APIError.server(status: (resp as? HTTPURLResponse)?.statusCode ?? 0)
+        }
+        let decoded = try JSONDecoder().decode(APIResponse<T>.self, from: data)
+        if !decoded.success {
+            throw APIError.api(message: decoded.error ?? decoded.message ?? "请求失败")
+        }
+        guard let d = decoded.data else {
+            throw APIError.api(message: "响应缺少数据")
+        }
+        return d
+    }
+
     /// Fetches raw data (for subtitles / downloads) without envelope parsing.
     func rawData(_ path: String, query: [URLQueryItem]? = nil) async throws -> Data {
         let u = try url(path, query: query)

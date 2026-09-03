@@ -24,6 +24,13 @@ struct SettingsView: View {
                         .autocorrectionDisabled()
                 }
 
+                Section("管理") {
+                    NavigationLink("服务器配置") { ConfigEditorView() }
+                    NavigationLink("数据库设置") { DatabaseSetupView() }
+                    NavigationLink("JAVDB 登录") { JavdbLoginView() }
+                    NavigationLink("日志") { LogsView() }
+                }
+
                 Section {
                     Button("重新连接 / 更换服务器") {
                         config.baseURL = ""

@@ -195,6 +195,47 @@ enum JavDBSDK {
         try await APIClient.shared.get("/login/covers", query: [.init(name: "limit", value: "\(limit)")],
                                        as: LoginCoversPage.self)
     }
+
+    // MARK: Admin (setup / logs / JAVDB account)
+
+    static func logs() async throws -> JSONObject {
+        try await APIClient.shared.get("/logs", as: JSONObject.self)
+    }
+
+    static func setupStatus() async throws -> JSONObject {
+        try await APIClient.shared.get("/setup/status", as: JSONObject.self)
+    }
+
+    static func setupTestConnection(_ db: [String: Any]) async throws -> JSONObject {
+        try await APIClient.shared.postRawJSON("/setup/test-connection", body: db, as: JSONObject.self)
+    }
+
+    static func setupListDatabases(_ db: [String: Any]) async throws -> JSONObject {
+        try await APIClient.shared.postRawJSON("/setup/list-databases", body: db, as: JSONObject.self)
+    }
+
+    static func setupCreateDatabase(_ db: [String: Any]) async throws -> JSONObject {
+        try await APIClient.shared.postRawJSON("/setup/create-database", body: db, as: JSONObject.self)
+    }
+
+    static func setupInitialize(_ db: [String: Any]) async throws -> JSONObject {
+        try await APIClient.shared.postRawJSON("/setup/initialize", body: db, as: JSONObject.self)
+    }
+
+    static func setupRestart() async throws -> JSONObject {
+        try await APIClient.shared.postRawJSON("/setup/restart", body: [:], as: JSONObject.self)
+    }
+
+    static func javdbLogin(username: String, password: String) async throws -> JSONObject {
+        try await APIClient.shared.postRawJSON("/get-token",
+                                               body: ["username": username, "password": password],
+                                               as: JSONObject.self)
+    }
+
+    static func javdbUserInfo(refresh: Bool = false) async throws -> JSONObject {
+        let q = refresh ? [URLQueryItem(name: "refresh", value: "true")] : nil
+        return try await APIClient.shared.get("/javdb/user", query: q, as: JSONObject.self)
+    }
 }
 
 /// Minimal dynamic JSON wrapper for endpoints whose shape is not strictly typed.
