@@ -1,0 +1,13 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcuserdatad
+
+# macOS
+.DS_Store
+
+# IPA output
+*.ipa
+Payload/
