@@ -48,6 +48,6 @@ struct RemoteImage: View {
             }
         }
         .onAppear { loader.load(url) }
-        .onChange(of: url) { newValue in loader.load(newValue) }
+        .onChange(of: url) { _, newValue in loader.load(newValue) }
     }
 }
